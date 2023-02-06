@@ -4,19 +4,28 @@ import java.io.Serializable;
 
 import com.excercise.todolist.demo.entities.enums.TaskStatus;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class ToDoList implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String taskName;
+	
+	private String name;
 	private Integer status;
 	private String description;
 	
 	public ToDoList (){}
 
-	public ToDoList(Integer id, String taskName,TaskStatus status, String description) {
+	public ToDoList(Integer id, String name,TaskStatus status, String description) {
 		this.id = id;
-		this.taskName = taskName;
+		this.name = name;
 		setTaskStatus (status);
 		this.description = description;
 	}
@@ -29,12 +38,12 @@ public class ToDoList implements Serializable {
 		this.id = id;
 	}
 
-	public String getTaskName() {
-		return taskName;
+	public String getName() {
+		return name;
 	}
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public TaskStatus getTaskStatus() {
