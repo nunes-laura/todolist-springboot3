@@ -29,7 +29,10 @@ public class ToDoListService {
 		
 	}
 	
-	
+	public void delete (Integer id) {
+		repository.deleteById(id);
+		
+	}
 	
 	
 

@@ -29,6 +29,8 @@ public class TestConfig implements CommandLineRunner {
 	ToDoList t5 = new ToDoList(null, "Wash the dishes", TaskStatus.CANCELLED, "Put it all in the dishwasher");
 	
 	tRepository.saveAll(Arrays.asList(t1, t2, t3, t4, t5));
+	
+	
 		
 		
 		
