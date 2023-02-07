@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.excercise.todolist.demo.entities.ToDoList;
 import com.excercise.todolist.demo.resources.repositories.ToDoListRepository;
+import com.excercise.todolist.demo.services.exceptions.ResourceNotFoundException;
 
 
 @Service
@@ -21,7 +22,7 @@ public class ToDoListService {
 	
 	public ToDoList findById(Integer id) {
 		Optional<ToDoList> obj =  repository.findById(id);
-		return obj.get();	}
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));	}
 	
 	
 	public ToDoList insert (ToDoList tl) {
