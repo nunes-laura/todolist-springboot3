@@ -17,12 +17,19 @@ public class ToDoListService {
 	private ToDoListRepository repository;
 	
 	public List<ToDoList> findAll() {
-		return repository.findAll();
-	}
+		return repository.findAll(); }
 	
 	public ToDoList findById(Integer id) {
 		Optional<ToDoList> obj =  repository.findById(id);
 		return obj.get();	}
+	
+	
+	public ToDoList insert (ToDoList tl) {
+		return repository.save(tl);
+		
+	}
+	
+	
 	
 	
 

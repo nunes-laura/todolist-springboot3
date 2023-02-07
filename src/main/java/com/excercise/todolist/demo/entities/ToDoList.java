@@ -18,12 +18,14 @@ public class ToDoList implements Serializable {
 	private Integer id;
 	
 	private String name;
+	
 	private Integer status;
+	
 	private String description;
 	
 	public ToDoList (){}
 
-	public ToDoList(Integer id, String name,TaskStatus status, String description) {
+	public ToDoList(Integer id, String name, TaskStatus status, String description) {
 		this.id = id;
 		this.name = name;
 		setTaskStatus (status);
