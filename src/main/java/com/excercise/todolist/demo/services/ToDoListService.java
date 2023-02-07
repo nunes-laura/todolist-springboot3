@@ -11,6 +11,8 @@ import com.excercise.todolist.demo.entities.ToDoList;
 import com.excercise.todolist.demo.resources.repositories.ToDoListRepository;
 import com.excercise.todolist.demo.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 @Service
 public class ToDoListService {
@@ -38,9 +40,12 @@ public class ToDoListService {
 	}
 	
 	public ToDoList update(Integer id, ToDoList obj) {
+		try {
 		ToDoList entity = repository.getReferenceById(id);
 		updateData(entity, obj);
-		return repository.save(entity);
+		return repository.save(entity);}
+		catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);}
 	}
 
 	private void updateData(ToDoList entity, ToDoList obj) {
